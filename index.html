@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Contact E.I.S. - Comprehensive Pitch Deck</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #0a0e27;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        .header {
+            background: rgba(26, 31, 58, 0.5);
+            border-bottom: 1px solid rgba(0, 217, 255, 0.2);
+            padding: 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(to right, #00d9ff, #b344ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header-subtitle {
+            font-size: 0.75rem;
+            color: #999;
+            margin-top: 0.25rem;
+        }
+
+        .header-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.75rem 1rem;
+            background: rgba(0, 217, 255, 0.2);
+            border: 1px solid rgba(0, 217, 255, 0.3);
+            border-radius: 0.5rem;
+            color: #ccc;
+            cursor: pointer;
+            font-size: 0.875rem;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            background: rgba(0, 217, 255, 0.3);
+        }
+
+        .main-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: calc(100vh - 120px);
+            padding: 3rem 1.5rem;
+        }
+
+        .slide {
+            max-width: 60rem;
+            background: linear-gradient(135deg, #00d9ff 0%, #b344ff 100%);
+            border-radius: 1rem;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 217, 255, 0.2);
+            min-height: 600px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .slide-content {
+            margin-bottom: 2rem;
+        }
+
+        .slide-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .slide-title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .slide-subtitle {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .slide-text {
+            font-size: 1.125rem;
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .slide-points {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .slide-points li {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .slide-points li:before {
+            content: "✓";
+            font-size: 1.25rem;
+            margin-top: 0.1rem;
+            flex-shrink: 0;
+        }
+
+        .slide-number {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.6);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 1rem;
+        }
+
+        .footer {
+            background: rgba(26, 31, 58, 0.5);
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-btn {
+            padding: 0.75rem 1.5rem;
+            background: rgba(0, 217, 255, 0.2);
+            border: 1px solid rgba(0, 217, 255, 0.5);
+            border-radius: 0.5rem;
+            color: white;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .nav-btn:hover {
+            background: rgba(0, 217, 255, 0.3);
+        }
+
+        .slide-indicators {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 40rem;
+        }
+
+        .indicator {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 0.25rem;
+            background: rgba(0, 217, 255, 0.3);
+            border: 1px solid rgba(0, 217, 255, 0.5);
+            cursor: pointer;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ccc;
+            transition: all 0.3s;
+        }
+
+        .indicator.active {
+            background: #00d9ff;
+            color: #0a0e27;
+            font-weight: bold;
+        }
+
+        .indicator:hover {
+            background: rgba(0, 217, 255, 0.5);
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.2), rgba(0, 217, 255, 0.2));
+            border-top: 1px solid rgba(0, 217, 255, 0.3);
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .cta-text {
+            color: #ccc;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-btn-primary {
+            background: #00d9ff;
+            color: #0a0e27;
+        }
+
+        .cta-btn-primary:hover {
+            background: #00b8cc;
+        }
+
+        .cta-btn-secondary {
+            background: #ffd700;
+            color: #0a0e27;
+        }
+
+        .cta-btn-secondary:hover {
+            background: #e6c200;
+        }
+
+        .cta-btn-tertiary {
+            border: 2px solid #00d9ff;
+            color: #00d9ff;
+            background: transparent;
+        }
+
+        .cta-btn-tertiary:hover {
+            background: rgba(0, 217, 255, 0.1);
+        }
+
+        .contact-info {
+            border-top: 1px solid rgba(0, 217, 255, 0.2);
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-label {
+            font-size: 0.875rem;
+            color: #999;
+            margin-bottom: 0.75rem;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            color: #ccc;
+        }
+
+        .contact-links a {
+            color: #00d9ff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .contact-links a:hover {
+            color: #ffd700;
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 2rem;
+                min-height: auto;
+            }
+
+            .slide-title {
+                font-size: 2rem;
+            }
+
+            .slide-subtitle {
+                font-size: 1.25rem;
+            }
+
+            .header-buttons {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .footer {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div>
+            <div class="header-title">First Contact E.I.S.</div>
+            <div class="header-subtitle">Comprehensive System Overview</div>
+        </div>
+        <div class="header-buttons">
+            <button class="btn">📥 Download</button>
+            <button class="btn">📤 Share</button>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div id="slideContainer" class="slide">
+            <div class="slide-content">
+                <div class="slide-icon" id="slideIcon">🎯</div>
+                <h2 class="slide-title" id="slideTitle">First Contact E.I.S.</h2>
+                <h3 class="slide-subtitle" id="slideSubtitle">Complete System Overview</h3>
+                <p class="slide-text" id="slideText">Cloud-Agnostic Accountability Infrastructure for Homeless Services</p>
+                <ul class="slide-points" id="slidePoints"></ul>
+            </div>
+            <div class="slide-number" id="slideNumber">Slide 1 of 20</div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="nav-buttons">
+            <button class="nav-btn" onclick="previousSlide()">← Previous</button>
+            <button class="nav-btn" onclick="nextSlide()">Next →</button>
+        </div>
+        <div class="slide-indicators" id="indicators"></div>
+    </div>
+
+    <div class="cta-section" id="ctaSection" style="display:none;">
+        <div class="cta-title">Let's Fix This Together</div>
+        <p class="cta-text">We're vendors. We're deployment-ready. We need a chance and minimal cloud credits. Let's prove this works.</p>
+        <div class="cta-buttons">
+            <a href="https://einharjer.org/demos" class="cta-btn cta-btn-primary">View Interactive Demo</a>
+            <a href="mailto:james@einharjer.org" class="cta-btn cta-btn-secondary">Schedule Demo Call</a>
+            <a href="https://einharjer.org" class="cta-btn cta-btn-tertiary">Back to Website</a>
+        </div>
+        <div class="contact-info">
+            <div class="contact-label">Contact Information:</div>
+            <div class="contact-links">
+                <a href="mailto:james@einharjer.org">📧 james@einharjer.org</a>
+                <a href="mailto:faernstromjames@gmail.com">📧 faernstromjames@gmail.com</a>
+                <a href="https://einharjer.org">🌐 einharjer.org</a>
+                <a href="tel:562-681-1431">📞 562-681-1431</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const slides = [
+            {
+                icon: '🎯',
+                title: 'First Contact E.I.S.',
+                subtitle: 'Complete System Overview',
+                text: 'Cloud-Agnostic Accountability Infrastructure for Homeless Services',
+                points: []
+            },
+            {
+                icon: '⚠️',
+                title: 'The Homelessness Crisis',
+                subtitle: 'Long Beach: $54M Invested. 71 People Housed. No Accountability.',
+                text: 'Billions in resources. Thousands of dedicated staff. Infinite variables. But no system to measure what\'s actually working.',
+                points: [
+                    'Homelessness increased despite massive investment',
+                    'Vendor self-reporting (no verification)',
+                    'No cost-per-outcome metrics',
+                    'Geographic service gaps unknown',
+                    'Political pressure for results'
+                ]
+            },
+            {
+                icon: '📉',
+                title: 'Why Current Systems Fail',
+                subtitle: 'The Accountability Gap',
+                text: 'You have data silos, vendor self-reporting, and no real-time visibility into outcomes. You can\'t measure what you can\'t see.',
+                points: [
+                    'Fragmented data across multiple systems',
+                    'No unified vendor performance tracking',
+                    'Delayed outcome reporting (weeks/months)',
+                    'Impossible to identify what works',
+                    'No accountability for results'
+                ]
+            },
+            {
+                icon: '✨',
+                title: 'First Contact E.I.S.',
+                subtitle: 'The Complete Solution',
+                text: 'Real-time accountability infrastructure. Vendors get free tools they love. You get Layer 8: real performance data they don\'t know they\'re generating.',
+                points: [
+                    'Trojan Horse model: vendors adopt for free tools',
+                    'Layer 8 dashboard: real performance data',
+                    'Cost-per-outcome by vendor',
+                    'Housing success rates tracked automatically',
+                    'Geographic service coverage maps'
+                ]
+            },
+            {
+                icon: '🏗️',
+                title: 'System Architecture',
+                subtitle: 'How First Contact Works',
+                text: 'Integrated intake, case management, compliance, and analytics. All in one cloud-agnostic platform.',
+                points: [
+                    'Unified intake and case management',
+                    'Real-time data processing',
+                    'Automated compliance reporting',
+                    'Multi-tenant architecture',
+                    'Enterprise-grade security'
+                ]
+            },
+            {
+                icon: '🌐',
+                title: 'Cloud-Agnostic Infrastructure',
+                subtitle: 'Your Data. Your Infrastructure. Your Control.',
+                text: 'Deploy on your servers, any cloud provider, or hybrid. No vendor lock-in. Full compliance with HIPAA, FERPA, and local regulations.',
+                points: [
+                    'Deploy on-premise (your infrastructure)',
+                    'Deploy on AWS, Azure, Google Cloud',
+                    'Deploy hybrid (some on-prem, some cloud)',
+                    'Full data sovereignty and control',
+                    'No forced cloud migration'
+                ]
+            },
+            {
+                icon: '🔗',
+                title: 'DPPS & Multi-Service Center Integration',
+                subtitle: 'Works With Your Existing Systems',
+                text: 'First Contact integrates seamlessly with DPPS, HMIS, CES, and any multi-service center platform. API-first architecture means no rip-and-replace.',
+                points: [
+                    'DPPS integration (real-time data sync)',
+                    'Multi-service center coordination',
+                    'HMIS/CES compatibility',
+                    'API-first architecture',
+                    'No system replacement required'
+                ]
+            },
+            {
+                icon: '⚙️',
+                title: 'Enterprise-Grade Technology',
+                subtitle: 'Built for Scale, Security, and Compliance',
+                text: 'Microservices architecture, end-to-end encryption, real-time data processing, and automated compliance reporting.',
+                points: [
+                    'Microservices architecture (scalable)',
+                    'End-to-end encryption (secure)',
+                    'Real-time data processing',
+                    'Automated compliance reporting',
+                    'Multi-tenant infrastructure'
+                ]
+            },
+            {
+                icon: '📱',
+                title: 'Unified Intake Process',
+                subtitle: 'From Outreach to Case Management',
+                text: 'QR code intake, AI-powered case planning, automated compliance documentation, and real-time outcome tracking.',
+                points: [
+                    'QR code intake (seconds, not hours)',
+                    'AI case planning (personalized)',
+                    'Automated documentation',
+                    'Real-time progress tracking',
+                    'Mobile-first design'
+                ]
+            },
+            {
+                icon: '📊',
+                title: 'Layer 8: The Real Data',
+                subtitle: 'Vendor Performance Analytics',
+                text: 'Real-time visibility into vendor performance, cost-per-outcome, housing success rates, and geographic coverage.',
+                points: [
+                    'Real-time vendor performance tracking',
+                    'Cost-per-outcome metrics',
+                    'Housing success rates',
+                    'Geographic coverage analysis',
+                    'Automated compliance reporting'
+                ]
+            },
+            {
+                icon: '💰',
+                title: 'Cost-Per-Outcome Metrics',
+                subtitle: 'Know Exactly What You\'re Paying For',
+                text: 'Track the true cost of housing someone, providing case management, or achieving other outcomes. Compare vendors. Identify inefficiencies.',
+                points: [
+                    'True cost calculation per outcome',
+                    'Vendor comparison metrics',
+                    'Efficiency identification',
+                    'Budget optimization',
+                    'ROI tracking'
+                ]
+            },
+            {
+                icon: '🏠',
+                title: 'Housing Success Tracking',
+                subtitle: 'Real-Time Outcome Measurement',
+                text: 'Automated tracking of housing placements, retention rates, and long-term stability. Know what works.',
+                points: [
+                    'Automated housing placement tracking',
+                    'Retention rate measurement',
+                    'Long-term stability monitoring',
+                    'Success rate comparison',
+                    'Outcome prediction'
+                ]
+            },
+            {
+                icon: '🗺️',
+                title: 'Geographic Service Coverage',
+                subtitle: 'Identify Service Gaps',
+                text: 'Visualize where services are being provided and where gaps exist. Optimize vendor distribution.',
+                points: [
+                    'Service coverage by neighborhood',
+                    'Identify underserved areas',
+                    'Vendor distribution optimization',
+                    'Outreach effectiveness by location',
+                    'Resource allocation insights'
+                ]
+            },
+            {
+                icon: '✅',
+                title: 'Automated Compliance & Reporting',
+                subtitle: 'Regulatory Requirements Made Easy',
+                text: 'Automated compliance documentation, audit trails, and regulatory reporting. HIPAA, FERPA, and local requirements built-in.',
+                points: [
+                    'Automated compliance documentation',
+                    'Audit trails for every action',
+                    'Regulatory reporting (automated)',
+                    'HIPAA/FERPA compliance',
+                    'Local requirement support'
+                ]
+            },
+            {
+                icon: '💡',
+                title: 'Why We Built This',
+                subtitle: 'Disadvantaged Background. Lived Experience.',
+                text: 'I grew up experiencing homelessness and incarceration. I know the system is broken. I built First Contact because I understand the problem from the inside.',
+                points: [
+                    'Founder: disadvantaged background',
+                    'Lived experience with homelessness',
+                    'Built from real understanding',
+                    'Not a consultant solution',
+                    'Designed by someone who lived it'
+                ]
+            },
+            {
+                icon: '🚀',
+                title: 'Implementation Roadmap',
+                subtitle: 'From Pilot to Full Deployment',
+                text: 'Month 1-2: Pilot with 2-3 vendors. Month 3-4: Full deployment. Month 5+: Optimization and expansion.',
+                points: [
+                    'Month 1-2: Pilot with select vendors',
+                    'Month 3-4: Full Long Beach deployment',
+                    'Month 5+: Optimization and scaling',
+                    'Parallel: Data migration and integration',
+                    'Support: 24/7 implementation team'
+                ]
+            },
+            {
+                icon: '📈',
+                title: 'Return on Investment',
+                subtitle: 'The Business Case',
+                text: 'Reduce vendor costs by 20-30% through accountability. Increase housing outcomes by 40%+. Prove results for reelection.',
+                points: [
+                    '20-30% vendor cost reduction',
+                    '40%+ housing outcome increase',
+                    'Proof of results for stakeholders',
+                    'Data-driven decision making',
+                    'Measurable ROI'
+                ]
+            },
+            {
+                icon: '🏛️',
+                title: 'Legacy Architecture & V2 Roadmap',
+                subtitle: 'Building on Success',
+                text: 'V1 is the foundation. V2 adds Obama Phone integration and city-wide QR code network. V3 brings smart contracts and autonomous systems.',
+                points: [
+                    'V1: Complete accountability system (current)',
+                    'V2: Obama Phone + QR code network (2026)',
+                    'V3: Smart contracts + kiosks (2027+)',
+                    'Each version builds on previous',
+                    'Backward compatible architecture'
+                ]
+            },
+            {
+                icon: '📱',
+                title: 'V2: Obama Phone Pilot',
+                subtitle: 'Engaging the Vulnerable at Scale',
+                text: 'Pre-loaded on Obama Phones. QR codes on boarding ads, service centers, and outreach materials. Homeless individuals scan, get intake, enter system in seconds.',
+                points: [
+                    'Pre-loaded on Obama Phones',
+                    'QR code onboarding everywhere',
+                    'Seconds to intake (not hours)',
+                    'Real-time engagement tracking',
+                    'Vulnerable population access'
+                ]
+            },
+            {
+                icon: '🤖',
+                title: 'V3: Smart Contracts & Autonomous Systems',
+                subtitle: 'The Future of Accountability',
+                text: 'Smart contract-based vendor payments (automated when outcomes achieved). Kiosk network for self-service intake. Blockchain-verified outcomes.',
+                points: [
+                    'Smart contract vendor payments',
+                    'Kiosk network for intake',
+                    'Blockchain-verified outcomes',
+                    'Autonomous case management',
+                    'Full ecosystem automation'
+                ]
+            },
+            {
+                icon: '⏰',
+                title: 'Let\'s Fix This Together',
+                subtitle: 'We\'re Vendors. We\'re Ready. We\'re Your Solution.',
+                text: 'We\'re already working with your city. We\'re deployment-ready now. All we need is a chance and minimal cloud credits. Long Beach is our first choice. Let\'s prove this works.',
+                points: [
+                    'Preferred vendor status',
+                    'Deployment-ready NOW',
+                    'Minimal ask: chance + cloud credits',
+                    'Long Beach first, others second',
+                    'Election year = urgency + impact'
+                ]
+            }
+        ];
+
+        let currentSlide = 0;
+
+        function renderSlide(index) {
+            const slide = slides[index];
+            document.getElementById('slideIcon').textContent = slide.icon;
+            document.getElementById('slideTitle').textContent = slide.title;
+            document.getElementById('slideSubtitle').textContent = slide.subtitle;
+            document.getElementById('slideText').textContent = slide.text;
+            
+            const pointsList = document.getElementById('slidePoints');
+            pointsList.innerHTML = '';
+            slide.points.forEach(point => {
+                const li = document.createElement('li');
+                li.textContent = point;
+                pointsList.appendChild(li);
+            });
+            
+            document.getElementById('slideNumber').textContent = `Slide ${index + 1} of ${slides.length}`;
+            
+            // Show CTA section on last slide
+            document.getElementById('ctaSection').style.display = index === slides.length - 1 ? 'block' : 'none';
+            
+            // Update indicators
+            const indicators = document.querySelectorAll('.indicator');
+            indicators.forEach((ind, i) => {
+                ind.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % slides.length;
+            renderSlide(currentSlide);
+        }
+
+        function previousSlide() {
+            currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+            renderSlide(currentSlide);
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            renderSlide(currentSlide);
+        }
+
+        // Initialize
+        function init() {
+            const indicatorsContainer = document.getElementById('indicators');
+            slides.forEach((_, index) => {
+                const indicator = document.createElement('button');
+                indicator.className = 'indicator';
+                indicator.textContent = index + 1;
+                indicator.onclick = () => goToSlide(index);
+                indicatorsContainer.appendChild(indicator);
+            });
+            renderSlide(0);
+        }
+
+        init();
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') previousSlide();
+        });
+    </script>
+</body>
+</html>
